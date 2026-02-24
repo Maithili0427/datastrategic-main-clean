@@ -109,17 +109,20 @@ const Services = () => {
     <Layout>
       {/* Hero Section with Video */}
       <section className="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center justify-center">
-  {/* Video Background */}
-  <video
-    className="absolute inset-0 w-full h-full object-cover z-0"
-    autoPlay
-    loop
-    muted
-    playsInline
-  >
-    <source src="/ok.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+ {/* Video Background */}
+<video
+  className="absolute inset-0 w-full h-full object-cover z-0"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source
+    src={`${import.meta.env.BASE_URL}ok.mp4`}
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
 
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-black/80 z-10" />
@@ -341,29 +344,28 @@ const Services = () => {
 
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-      {[
-        {
-          country: "USA",
-          address: "2710 Pace West Dr, Tucson AZ 85730",
-          img: "/images/usa.png",
-        },
-        {
-          country: "AUSTRALIA",
-          address: "21 Benalia Cres Marayong 2148",
-          img: "/images/Australia.png",
-        },
-        {
-          country: "UK",
-          address: "18 Tuesday Market Place, King's Lynn, Norfolk",
-          img: "/images/UK.png",
-        },
-        {
-          country: "INDIA",
-          address: "Bawani Nagar, Jaipur, Rajasthan",
-          img: "/images/India.png",
-        },
-      ].map((office, index) => (
-
+  {[
+    {
+      country: "USA",
+      address: "2710 Pace West Dr, Tucson AZ 85730",
+      img: `${import.meta.env.BASE_URL}images/usa.png`,
+    },
+    {
+      country: "AUSTRALIA",
+      address: "21 Benalia Cres Marayong 2148",
+      img: `${import.meta.env.BASE_URL}images/Australia.png`,
+    },
+    {
+      country: "UK",
+      address: "18 Tuesday Market Place, King's Lynn, Norfolk",
+      img: `${import.meta.env.BASE_URL}images/UK.png`,
+    },
+    {
+      country: "INDIA",
+      address: "Bawani Nagar, Jaipur, Rajasthan",
+      img: `${import.meta.env.BASE_URL}images/India.png`,
+    },
+  ].map((office, index) => (
         <div
           key={index}
           className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 p-8 text-center group hover:-translate-y-2"

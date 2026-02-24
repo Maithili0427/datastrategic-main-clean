@@ -90,16 +90,19 @@ const Portfolio = () => {
       {/* Portfolio / Case Studies Hero Section */}
 <section className="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center justify-center">
   {/* Video Background */}
-  <video
-    className="absolute inset-0 w-full h-full object-cover z-0"
-    autoPlay
-    loop
-    muted
-    playsInline
-  >
-    <source src="/profilio.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+<video
+  className="absolute inset-0 w-full h-full object-cover z-0"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source
+    src={`${import.meta.env.BASE_URL}profilio.mp4`}
+    type="video/mp4"
+  />
+  Your browser does not support the video tag.
+</video>
 
   {/* Dark overlay for text clarity */}
   <div className="absolute inset-0 bg-black/80 z-10" />
@@ -363,15 +366,15 @@ const Portfolio = () => {
 
   <div className="flex w-full h-[420px]">
 
-    {[
-      { title: " RESTAURANT", img: "/hotel.webp" },
-      { title: "BANKING", img: "/banker.jpg" },
-      { title: "EDUCATION", img: "/student.avif" },
-      { title: "TRAVEL", img: "/travel.jpg" },
-      { title: "HEALTHCARE", img: "/doctor.jpg" },
-      { title: "FITNESS", img: "/yoga.jpg" },
-      { title: "MEDIA", img: "/media.avif" },
-    ].map((item, index) => (
+  {[
+    { title: "RESTAURANT", img: `${import.meta.env.BASE_URL}hotel.webp` },
+    { title: "BANKING", img: `${import.meta.env.BASE_URL}banker.jpg` },
+    { title: "EDUCATION", img: `${import.meta.env.BASE_URL}student.avif` },
+    { title: "TRAVEL", img: `${import.meta.env.BASE_URL}travel.jpg` },
+    { title: "HEALTHCARE", img: `${import.meta.env.BASE_URL}doctor.jpg` },
+    { title: "FITNESS", img: `${import.meta.env.BASE_URL}yoga.jpg` },
+    { title: "MEDIA", img: `${import.meta.env.BASE_URL}media.avif` },
+  ].map((item, index) => (
 
       <motion.div
         key={index}

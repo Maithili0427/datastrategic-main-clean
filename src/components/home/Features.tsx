@@ -40,10 +40,10 @@ const WhyChooseUs = () => {
           className="relative rounded-3xl overflow-hidden shadow-xl"
         >
           <img
-            src="/whychooseus.webp"
-            alt="Team"
-            className="w-full h-full object-cover rounded-3xl"
-          />
+  src={`${import.meta.env.BASE_URL}whychooseus.webp`}
+  alt="Team"
+  className="w-full h-full object-cover rounded-3xl"
+/>
 
           {/* soft glow */}
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/20 to-purple-200/20"></div>

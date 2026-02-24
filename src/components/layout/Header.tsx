@@ -42,7 +42,11 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-navy-light flex items-center justify-center overflow-hidden">
-            <img src="/logo.jpeg" alt="Logo" className="w-8 h-8 object-contain" />
+            <img 
+  src={`${import.meta.env.BASE_URL}logo.png`} 
+  alt="Logo" 
+  className="w-8 h-8 object-contain" 
+/>
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-bold text-primary font-display leading-tight">

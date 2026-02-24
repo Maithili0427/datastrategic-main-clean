@@ -7,40 +7,39 @@ const feedbacks = [
     name: "Alice Johnson",
     role: "CEO, TechCorp",
     message: "IC SocialPulse completely transformed how we handle data!",
-    img: "/Alice Johnson.jpg",
+    img: `${import.meta.env.BASE_URL}Alice Johnson.jpg`,
   },
   {
     name: "Michael Smith",
     role: "Founder, DataLabs",
     message: "Amazing insights and super easy to use. Highly recommend!",
-    img: "/michael.jpg",
+    img: `${import.meta.env.BASE_URL}michael.jpg`,
   },
   {
     name: "Sophia Lee",
     role: "Marketing Head, BrandX",
     message: "Our team productivity skyrocketed after using their solution.",
-    img: "/sohia.jpg",
+    img: `${import.meta.env.BASE_URL}sohia.jpg`,
   },
   {
     name: "David Kim",
     role: "CTO, TechSolutions",
     message: "Data analytics never felt this easy and fun!",
-    img: "/david.jpg",
+    img: `${import.meta.env.BASE_URL}david.jpg`,
   },
   {
     name: "Emma Brown",
     role: "Project Manager, InnovateX",
     message: "Our decision-making process improved drastically.",
-    img: "/emma.png",
+    img: `${import.meta.env.BASE_URL}emma.png`,
   },
   {
     name: "John Lee",
     role: "Lead Developer, DevWorks",
     message: "IC SocialPulse is a game changer for our team!",
-    img: "/john.jpg",
+    img: `${import.meta.env.BASE_URL}john.jpg`,
   },
 ];
-
 const FeedbackCarousel = () => {
   const [current, setCurrent] = useState(0);
 

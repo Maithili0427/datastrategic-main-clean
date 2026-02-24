@@ -49,13 +49,13 @@ const About = () => {
       <section className="relative min-h-screen overflow-hidden">
   {/* Video background */}
   <video
-    className="absolute inset-0 w-full h-full object-cover"
-    src="/ai.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-  />
+  className="absolute inset-0 w-full h-full object-cover"
+  src={`${import.meta.env.BASE_URL}ai.mp4`}
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-black/80" />
 
@@ -95,10 +95,10 @@ const About = () => {
 
   {/* Main Image */}
   <img
-    src="/about.jpg"
-    alt="Team"
-    className="w-full object-cover"
-  />
+  src={`${import.meta.env.BASE_URL}about.jpg`}
+  alt="Team"
+  className="w-full object-cover"
+/>
 
   {/* Blue Card */}
   <div className="mt-6 w-[85%] bg-blue-600 text-white p-8 rounded-tr-[70px] shadow-xl">
@@ -207,25 +207,37 @@ const About = () => {
 {/* RIGHT IMAGE DESIGN */}
 <div className="relative w-full h-[650px]">
 
-  {/* Top Left */}
-  <div className="absolute top-10 left-16 w-56 h-56 rounded-full bg-pink-400 overflow-hidden">
-    <img src="/img1.png" className="w-full h-full object-cover" />
-  </div>
+ {/* Top Left */}
+<div className="absolute top-10 left-16 w-56 h-56 rounded-full bg-pink-400 overflow-hidden">
+  <img 
+    src={`${import.meta.env.BASE_URL}img1.png`} 
+    className="w-full h-full object-cover" 
+  />
+</div>
 
-  {/* Top Right */}
-  <div className="absolute top-10 right-16 w-56 h-56 rounded-3xl bg-yellow-400 overflow-hidden">
-    <img src="/img2.png" className="w-full h-full object-cover" />
-  </div>
+{/* Top Right */}
+<div className="absolute top-10 right-16 w-56 h-56 rounded-3xl bg-yellow-400 overflow-hidden">
+  <img 
+    src={`${import.meta.env.BASE_URL}img2.png`} 
+    className="w-full h-full object-cover" 
+  />
+</div>
 
-  {/* Bottom Left — moved UP */}
-  <div className="absolute top-[300px] left-20 w-60 h-60 rounded-[50px] bg-teal-400 overflow-hidden">
-    <img src="/img3.png" className="w-full h-full object-cover" />
-  </div>
+{/* Bottom Left */}
+<div className="absolute top-[300px] left-20 w-60 h-60 rounded-[50px] bg-teal-400 overflow-hidden">
+  <img 
+    src={`${import.meta.env.BASE_URL}img3.png`} 
+    className="w-full h-full object-cover" 
+  />
+</div>
 
-  {/* Bottom Right — moved UP */}
-  <div className="absolute top-[300px] right-20 w-56 h-56 rounded-full bg-blue-400 overflow-hidden">
-    <img src="/img4.png" className="w-full h-full object-cover" />
-  </div>
+{/* Bottom Right */}
+<div className="absolute top-[300px] right-20 w-56 h-56 rounded-full bg-blue-400 overflow-hidden">
+  <img 
+    src={`${import.meta.env.BASE_URL}img4.png`} 
+    className="w-full h-full object-cover" 
+  />
+</div>
 
 </div>
 

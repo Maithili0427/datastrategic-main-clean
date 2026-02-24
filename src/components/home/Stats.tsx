@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const processData = [
   {
     title: "Project Analysis",
-    image: "/project.avif",
+    image: `${import.meta.env.BASE_URL}project.avif`,
     description:
       "Project analysis involves carefully examining the project to understand its objectives and feasibility.",
     points: [
@@ -17,7 +17,7 @@ const processData = [
   },
   {
     title: "Strategy & Planning",
-    image: "/planning.jpg",
+    image: `${import.meta.env.BASE_URL}planning.jpg`,
     description:
       "We create a clear roadmap and execution strategy for successful development.",
     points: [
@@ -30,7 +30,7 @@ const processData = [
   },
   {
     title: "UX/UI Designing",
-    image: "/ui.avif",
+    image: `${import.meta.env.BASE_URL}ui.avif`,
     description:
       "We design intuitive and visually engaging user experiences.",
     points: [
@@ -43,7 +43,7 @@ const processData = [
   },
   {
     title: "App Development",
-    image: "/devloper.jpg",
+    image: `${import.meta.env.BASE_URL}devloper.jpg`,
     description:
       "We build high-performance applications using modern tools.",
     points: [
@@ -56,7 +56,7 @@ const processData = [
   },
   {
     title: "App Testing & Launch",
-    image: "/app testing.webp",
+    image: `${import.meta.env.BASE_URL}app testing.webp`,
     description:
       "We ensure quality and smooth product launch.",
     points: [
@@ -69,7 +69,7 @@ const processData = [
   },
   {
     title: "Support & Maintenance",
-    image: "/support.jpg",
+    image: `${import.meta.env.BASE_URL}support.jpg`,
     description:
       "We provide ongoing updates and maintenance.",
     points: [

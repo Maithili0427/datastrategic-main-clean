@@ -70,13 +70,13 @@ const Contact = () => {
 <section className="relative min-h-screen overflow-hidden">
   {/* Video Background */}
   <video
-    className="absolute inset-0 w-full h-full object-cover"
-    src="/contact.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-  />
+  className="absolute inset-0 w-full h-full object-cover"
+  src={`${import.meta.env.BASE_URL}contact.mp4`}
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
       {/* Dark overlay for text visibility */}
   <div className="absolute inset-0 bg-black/80 z-10" />
 
