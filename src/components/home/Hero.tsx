@@ -36,7 +36,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container-custom relative z-10 pt-32 pb-20 px-4 sm:px-6">
+      <div className="w-full max-w-7xl mx-auto relative z-10 pt-32 pb-20 px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
@@ -121,7 +121,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0"
+            className="relative w-full flex justify-center lg:justify-end"
           >
             {/* Only show floating elements on md+ screens */}
             <div className="relative w-full max-w-md lg:max-w-full">
