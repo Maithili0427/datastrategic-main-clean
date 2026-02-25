@@ -205,46 +205,51 @@ const About = () => {
    
 
 {/* RIGHT IMAGE DESIGN */}
-<div className="relative w-full h-[650px]">
+<div className="relative w-full mt-10">
 
- {/* Top Left */}
-<div className="absolute top-10 left-16 w-56 h-56 rounded-full bg-pink-400 overflow-hidden">
-  <img 
-    src={`${import.meta.env.BASE_URL}img1.png`} 
-    className="w-full h-full object-cover" 
-  />
-</div>
-
-{/* Top Right */}
-<div className="absolute top-10 right-16 w-56 h-56 rounded-3xl bg-yellow-400 overflow-hidden">
-  <img 
-    src={`${import.meta.env.BASE_URL}img2.png`} 
-    className="w-full h-full object-cover" 
-  />
-</div>
-
-{/* Bottom Left */}
-<div className="absolute top-[300px] left-20 w-60 h-60 rounded-[50px] bg-teal-400 overflow-hidden">
-  <img 
-    src={`${import.meta.env.BASE_URL}img3.png`} 
-    className="w-full h-full object-cover" 
-  />
-</div>
-
-{/* Bottom Right */}
-<div className="absolute top-[300px] right-20 w-56 h-56 rounded-full bg-blue-400 overflow-hidden">
-  <img 
-    src={`${import.meta.env.BASE_URL}img4.png`} 
-    className="w-full h-full object-cover" 
-  />
-</div>
-
-</div>
-
-
-
+  {/* Mobile Layout */}
+  <div className="grid grid-cols-2 gap-4 md:hidden">
+    
+    <div className="rounded-full bg-pink-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img1.png`} className="w-full h-40 object-cover" />
     </div>
-  
+
+    <div className="rounded-3xl bg-yellow-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img2.png`} className="w-full h-40 object-cover" />
+    </div>
+
+    <div className="rounded-[30px] bg-teal-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img3.png`} className="w-full h-40 object-cover" />
+    </div>
+
+    <div className="rounded-full bg-blue-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img4.png`} className="w-full h-40 object-cover" />
+    </div>
+
+  </div>
+
+  {/* Desktop Layout */}
+  <div className="hidden md:block relative h-[650px]">
+
+    <div className="absolute top-10 left-16 w-56 h-56 rounded-full bg-pink-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img1.png`} className="w-full h-full object-cover" />
+    </div>
+
+    <div className="absolute top-10 right-16 w-56 h-56 rounded-3xl bg-yellow-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img2.png`} className="w-full h-full object-cover" />
+    </div>
+
+    <div className="absolute top-[300px] left-20 w-60 h-60 rounded-[50px] bg-teal-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img3.png`} className="w-full h-full object-cover" />
+    </div>
+
+    <div className="absolute top-[300px] right-20 w-56 h-56 rounded-full bg-blue-400 overflow-hidden">
+      <img src={`${import.meta.env.BASE_URL}img4.png`} className="w-full h-full object-cover" />
+    </div>
+
+  </div>
+</div>
+  </div>
 </section>
 
 
