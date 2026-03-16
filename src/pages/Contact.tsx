@@ -3,29 +3,16 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Twitter, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email Us",
-    details: ["hello@icsocialpulse.com", "support@icsocialpulse.com"],
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    details: ["+1 (234) 567-890", "+1 (234) 567-891"],
-  },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    details: ["123 Innovation Drive", "Tech City, TC 10001"],
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    details: ["Mon - Fri: 9AM - 6PM", "Sat - Sun: Closed"],
-  },
+  { icon: Mail, title: "Email Us", details: ["hello@icsocialpulse.com", "support@icsocialpulse.com"] },
+  { icon: Phone, title: "Call Us", details: ["+1 (234) 567-890", "+1 (234) 567-891"] },
+  { icon: MapPin, title: "Visit Us", details: ["123 Innovation Drive", "Tech City, TC 10001"] },
+  { icon: Clock, title: "Business Hours", details: ["Mon - Fri: 9AM - 6PM", "Sat - Sun: Closed"] },
 ];
+
+const subjects = ["General Inquiry", "Project Discussion", "Partnership", "Technical Support", "Careers"];
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,72 +26,74 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    // Reset form after success
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", company: "", subject: "", message: "" });
-    }, 3000);
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const templateParams = { ...formData };
+
+    try {
+      await emailjs.send(
+        "service_i626ngn",   // your EmailJS service ID
+        "template_wt66dgm",  // your EmailJS template ID
+        templateParams,
+        "g3yRGC9S-wBhCBWZi"  // your EmailJS public key
+      );
+
+      setIsSubmitted(true);
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+      });
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <Layout>
-      {/* Hero Section with Video */}
-<section className="relative min-h-screen overflow-hidden">
-  {/* Video Background */}
-  <video
-  className="absolute inset-0 w-full h-full object-cover"
-  src={`${import.meta.env.BASE_URL}contact.mp4`}
-  autoPlay
-  muted
-  loop
-  playsInline
-/>
-      {/* Dark overlay for text visibility */}
-  <div className="absolute inset-0 bg-black/80 z-10" />
-
-  {/* Text content centered */}
-  <div className="relative z-20 flex flex-col items-center justify-center min-h-screen text-center px-4">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="max-w-4xl"
-    >
-      <span className="inline-flex items-center px-4 py-2 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-sm font-medium mb-6">
-        Get In Touch
-      </span>
-
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6 leading-tight drop-shadow-2xl">
-        Let's Build Something{" "}
-        <span className="gradient-text-light">Amazing Together</span>
-      </h1>
-
-      <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto drop-shadow-md">
-        Have a project in mind? We'd love to hear about it. 
-        Reach out and let's start a conversation.
-      </p>
-    </motion.div>
-  </div>
-</section>
-
+      {/* Hero Section */}
+      <section className="relative min-h-screen overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={`${import.meta.env.BASE_URL}contact.mp4`}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-black/80 z-10" />
+        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl"
+          >
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-sm font-medium mb-6">
+              Get In Touch
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6 leading-tight drop-shadow-2xl">
+              Let's Build Something <span className="gradient-text-light">Amazing Together</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto drop-shadow-md">
+              Have a project in mind? We'd love to hear about it. Reach out and let's start a conversation.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section className="section-padding bg-background">
@@ -123,8 +112,7 @@ const Contact = () => {
                   Contact Information
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Ready to discuss your next project? Our team is here to help 
-                  you navigate your digital transformation journey.
+                  Ready to discuss your next project? Our team is here to help you navigate your digital transformation journey.
                 </p>
               </div>
 
@@ -142,13 +130,9 @@ const Contact = () => {
                       <item.icon className="w-5 h-5 text-cyan" />
                     </div>
                     <div>
-                      <h3 className="font-bold font-display text-primary mb-1">
-                        {item.title}
-                      </h3>
+                      <h3 className="font-bold font-display text-primary mb-1">{item.title}</h3>
                       {item.details.map((detail) => (
-                        <p key={detail} className="text-muted-foreground text-sm">
-                          {detail}
-                        </p>
+                        <p key={detail} className="text-muted-foreground text-sm">{detail}</p>
                       ))}
                     </div>
                   </motion.div>
@@ -157,9 +141,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div className="pt-6 border-t border-border">
-                <h3 className="font-bold font-display text-primary mb-4">
-                  Follow Us
-                </h3>
+                <h3 className="font-bold font-display text-primary mb-4">Follow Us</h3>
                 <div className="flex gap-3">
                   {[Linkedin, Twitter, Facebook].map((Icon, index) => (
                     <motion.a
@@ -185,17 +167,12 @@ const Contact = () => {
               className="lg:col-span-3"
             >
               <div className="glass-card rounded-3xl p-8 md:p-10">
-                <h2 className="text-2xl font-bold font-display text-primary mb-6">
-                  Send Us a Message
-                </h2>
-
+                <h2 className="text-2xl font-bold font-display text-primary mb-6">Send Us a Message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-foreground">
-                        Full Name *
-                      </label>
+                      <label htmlFor="name" className="text-sm font-medium text-foreground">Full Name *</label>
                       <input
                         type="text"
                         id="name"
@@ -210,9 +187,7 @@ const Contact = () => {
 
                     {/* Email */}
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-foreground">
-                        Email Address *
-                      </label>
+                      <label htmlFor="email" className="text-sm font-medium text-foreground">Email Address *</label>
                       <input
                         type="email"
                         id="email"
@@ -229,9 +204,7 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     {/* Company */}
                     <div className="space-y-2">
-                      <label htmlFor="company" className="text-sm font-medium text-foreground">
-                        Company
-                      </label>
+                      <label htmlFor="company" className="text-sm font-medium text-foreground">Company</label>
                       <input
                         type="text"
                         id="company"
@@ -245,9 +218,7 @@ const Contact = () => {
 
                     {/* Subject */}
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium text-foreground">
-                        Subject *
-                      </label>
+                      <label htmlFor="subject" className="text-sm font-medium text-foreground">Subject *</label>
                       <select
                         id="subject"
                         name="subject"
@@ -257,20 +228,16 @@ const Contact = () => {
                         className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition-all duration-300"
                       >
                         <option value="">Select a topic</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="project">Project Discussion</option>
-                        <option value="partnership">Partnership</option>
-                        <option value="support">Technical Support</option>
-                        <option value="careers">Careers</option>
+                        {subjects.map(subj => (
+                          <option key={subj} value={subj}>{subj}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
                   {/* Message */}
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-foreground">
-                      Message *
-                    </label>
+                    <label htmlFor="message" className="text-sm font-medium text-foreground">Message *</label>
                     <textarea
                       id="message"
                       name="message"
@@ -290,9 +257,7 @@ const Contact = () => {
                     whileHover={{ scale: isSubmitting || isSubmitted ? 1 : 1.02 }}
                     whileTap={{ scale: isSubmitting || isSubmitted ? 1 : 0.98 }}
                     className={`w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
-                      isSubmitted
-                        ? "bg-green-500 text-white"
-                        : "btn-accent"
+                      isSubmitted ? "bg-green-500 text-white" : "btn-accent"
                     }`}
                   >
                     {isSubmitting ? (
@@ -318,10 +283,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-    
-
-           
     </Layout>
   );
 };
